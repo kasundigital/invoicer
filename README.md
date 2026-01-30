@@ -67,6 +67,6 @@ Suggested schedule: every hour for recurring invoices and every day for reminder
 - Email templates support variables like `{{customer_name}}`, `{{invoice_number}}`, `{{amount_due}}`, `{{pay_link}}`.
 
 ## Next Steps
-- Wire full auth for staff users and RBAC policies.
+- Add RBAC policies per role and organization scoping in queries.
 - Expand reports with date filters and export to CSV.
-- Add online payment gateway integration.
+- Add online payment gateway integration and webhooks.
