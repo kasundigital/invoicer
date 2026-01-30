@@ -11,21 +11,13 @@ Production-ready invoicing web app designed for Namecheap cPanel shared hosting.
 - Payments + partial payments
 - Payment links (`/pay/{token}`) with simulated success
 - Recurring invoices + reminders (artisan commands)
-- Reports scaffolding (AR aging, sales by customer)
+- Reports scaffolding (AR aging, sales by customer) via data models
 - Audit logs + activity log tables
 - Branding & Templates module (logo, brand colors, PDF themes, layout toggles, email templates, numbering settings)
-- Customer portal login (customers can view invoices/quotes, accept/reject quotes, download PDF)
+- Customer portal (view invoices/quotes, accept/reject quotes, download PDF)
 
 ## PDF Generation
 This project uses `barryvdh/laravel-dompdf`, which works on shared hosting. PDF templates live in `resources/views/invoices/pdf.blade.php` and respect branding settings.
-
-## Email Options
-Configure `MAIL_*` in `.env` depending on your shared hosting support:
-- **SMTP** (most cPanel installs): use your domain mail server.
-- **Sendmail**: if enabled by the host.
-- **Mailgun/SES/Postmark**: supported via Laravel mailer drivers if your host allows outbound HTTPS.
-
-The invoice email is sent via `POST /invoices/{invoice}/send-email` and attaches the PDF.
 
 ## cPanel Deployment (Step-by-step)
 1. **Create MySQL DB** in cPanel and note the DB name, user, and password.
@@ -58,8 +50,8 @@ Add these in **cPanel → Cron Jobs** (adjust PHP path as needed):
 Suggested schedule: every hour for recurring invoices and every day for reminders.
 
 ## Demo Credentials
-- **Staff Login** (`/login`): `owner@example.com` / `password`
-- **Customer Portal** (`/portal/login`): `customer@example.com` / `customer123`
+- **Owner**: `owner@example.com`
+- **Password**: `password`
 
 ## Development Notes
 - Uploads are stored in `storage/app/public` and exposed via `storage:link`.
@@ -67,6 +59,7 @@ Suggested schedule: every hour for recurring invoices and every day for reminder
 - Email templates support variables like `{{customer_name}}`, `{{invoice_number}}`, `{{amount_due}}`, `{{pay_link}}`.
 
 ## Next Steps
-- Add RBAC policies per role and organization scoping in queries.
-- Expand reports with date filters and export to CSV.
-- Add online payment gateway integration and webhooks.
+- Wire full auth + portal login.
+- Add invoice activity timeline events.
+- Implement reports queries.
+- Add PDF download route + email sending service.

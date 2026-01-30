@@ -22,9 +22,4 @@ class InvoiceLine extends Model
     {
         return $this->belongsTo(Invoice::class);
     }
-
-    public function item(): BelongsTo
-    {
-        return $this->belongsTo(Item::class);
-    }
 }

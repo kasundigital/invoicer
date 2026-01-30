@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ActivityLog extends Model
 {
@@ -15,9 +14,4 @@ class ActivityLog extends Model
         'action',
         'description',
     ];
-
-    public function subject(): MorphTo
-    {
-        return $this->morphTo();
-    }
 }

@@ -37,9 +37,7 @@
                 <tbody>
                     @forelse($invoices as $invoice)
                         <tr class="border-t">
-                            <td class="px-4 py-3 font-medium">
-                                <a class="text-indigo-600" href="{{ route('invoices.show', $invoice) }}">{{ $invoice->invoice_number }}</a>
-                            </td>
+                            <td class="px-4 py-3 font-medium">{{ $invoice->invoice_number }}</td>
                             <td class="px-4 py-3">{{ $invoice->customer->name ?? 'Customer' }}</td>
                             <td class="px-4 py-3">{{ ucfirst($invoice->status) }}</td>
                             <td class="px-4 py-3">{{ number_format($invoice->amount_due, 2) }}</td>

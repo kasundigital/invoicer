@@ -22,9 +22,4 @@ class QuoteLine extends Model
     {
         return $this->belongsTo(Quote::class);
     }
-
-    public function item(): BelongsTo
-    {
-        return $this->belongsTo(Item::class);
-    }
 }
